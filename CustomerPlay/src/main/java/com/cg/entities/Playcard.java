@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="PlayCard")
 public class Playcard {
 		@Id
-		@Column(name="cust_id")
+		@Column(name="cust_Id")
 		private int custId;
 		private int gameId;
 		

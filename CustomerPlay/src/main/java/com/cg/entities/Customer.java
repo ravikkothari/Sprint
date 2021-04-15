@@ -14,14 +14,14 @@ import javax.persistence.Table;
 @Table(name="Customer")
 public class Customer {
 	 @Id
-	 @Column(name="cust_id")
+	 @Column(name="cust_Id")
 	 private int id;
 	 private String name;
 	 private int age;
 	 
 	 @OneToMany(targetEntity = Playcard.class, cascade = CascadeType.ALL)
-	 @JoinColumn(name = "cp_fk", referencedColumnName = "custId")
-	 private List<Playcard> playcard;
+	 @JoinColumn(name = "cp_fk", referencedColumnName = "cust_Id")
+	 private List<Playcard> Playcard;
 	
 	 public Customer(int id, String name, int age) {
 		super();

@@ -7,6 +7,6 @@ import com.cg.entities.Playcard;
 
 public interface PlaycardDAO  extends JpaRepository<Playcard, Integer>{
 
-	void getPlaycardById(Integer custId);
+
 
 }

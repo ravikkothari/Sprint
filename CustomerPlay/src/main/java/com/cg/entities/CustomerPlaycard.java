@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cart")
-public class Cart {
+@Table(name="Customerplaycard")
+public class CustomerPlaycard {
 		@Id
 		@Column(name="cust_Id")
 		private int custId;
@@ -23,18 +23,6 @@ public class Cart {
 			this.playcardId = playcardId;
 		}
 
-		public Cart() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-
-		public Cart(int custId, int gameId,int playcardId) {
-			super();
-			this.custId = custId;
-			this.gameId = gameId;
-			this.playcardId = playcardId;
-		}
-		
 		public int getCustId() {
 			return custId;
 		}
@@ -48,10 +36,25 @@ public class Cart {
 			this.gameId = gameId;
 		}
 
+		public CustomerPlaycard(int custId, int gameId, int playcardId) {
+			super();
+			this.custId = custId;
+			this.gameId = gameId;
+			this.playcardId = playcardId;
+		}
+
+		public CustomerPlaycard() {
+			super();
+		}
+		
 		@Override
 		public String toString() {
-			return "Cart [custId=" + custId + ", gameId=" + gameId + ", playcardId=" + playcardId + "]";
+			return "CustomerPlaycard [custId=" + custId + ", gameId=" + gameId + ", playcardId=" + playcardId + "]";
 		}
+
+		
+
+
 		
 		
 		

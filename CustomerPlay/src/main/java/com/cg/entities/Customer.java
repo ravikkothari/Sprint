@@ -18,22 +18,31 @@ public class Customer {
 	 private int id;
 	 private String name;
 	 private int age;
+	 private String password;
 	 
-	 @OneToMany(targetEntity = Cart.class, cascade = CascadeType.ALL)
+	 @OneToMany(targetEntity = CustomerPlaycard.class, cascade = CascadeType.ALL)
 	 @JoinColumn(name = "cp_fk", referencedColumnName = "cust_Id")
-	 private List<Cart> cart;
+	 private List<CustomerPlaycard> CustomerPlaycard;
 	
-	 public Customer() {
+
+	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public Customer(int id, String name, int age) {
+	
+
+	public Customer(int id, String name, int age, String password,
+			List<com.cg.entities.CustomerPlaycard> customerPlaycard) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
+		this.password = password;
+		CustomerPlaycard = customerPlaycard;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -59,10 +68,28 @@ public class Customer {
 		this.age = age;
 	}
 
+	public List<CustomerPlaycard> getCustomerPlaycard() {
+		return CustomerPlaycard;
+	}
+
+	public void setCustomerPlaycard(List<CustomerPlaycard> customerPlaycard) {
+		CustomerPlaycard = customerPlaycard;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", age=" + age + "]";
+		return "Customer [id=" + id + ", name=" + name + ", age=" + age + ", password=" + password
+				+ ", CustomerPlaycard=" + CustomerPlaycard + "]";
 	}
-	 
+
+	
 	
 }

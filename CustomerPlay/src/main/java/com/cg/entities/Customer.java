@@ -19,11 +19,16 @@ public class Customer {
 	 private String name;
 	 private int age;
 	 
-	 @OneToMany(targetEntity = Playcard.class, cascade = CascadeType.ALL)
+	 @OneToMany(targetEntity = Cart.class, cascade = CascadeType.ALL)
 	 @JoinColumn(name = "cp_fk", referencedColumnName = "cust_Id")
-	 private List<Playcard> Playcard;
+	 private List<Cart> cart;
 	
-	 public Customer(int id, String name, int age) {
+	 public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(int id, String name, int age) {
 		super();
 		this.id = id;
 		this.name = name;

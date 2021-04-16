@@ -2,16 +2,23 @@ package com.cg.services;
 
 import java.util.List;
 
-import com.cg.entities.Playcard;
+import com.cg.entities.Cart;
+
 
 public interface CustomerPlayService {
 
-	List<Playcard> getPlaycardById(Integer id);
+	
+	
 
-	List<Playcard> deletePlaycardById(Integer id);
+	static List<Cart> buyPlaycard(Cart c) {
+		
+		return null;
+	}
 
-	List<Playcard> rechargePlaycard(Playcard p);
+	Cart rechargePlaycardById(Integer playcardId);
 
+	
 
+	
 
 }

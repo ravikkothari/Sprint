@@ -7,17 +7,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PlayCard")
-public class Playcard {
+@Table(name="Cart")
+public class Cart {
 		@Id
 		@Column(name="cust_Id")
 		private int custId;
 		private int gameId;
+		private int playcardId;
 		
-		public Playcard(int custId, int gameId) {
+		public int getPlaycardId() {
+			return playcardId;
+		}
+
+		public void setPlaycardId(int playcardId) {
+			this.playcardId = playcardId;
+		}
+
+		public Cart() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Cart(int custId, int gameId,int playcardId) {
 			super();
 			this.custId = custId;
 			this.gameId = gameId;
+			this.playcardId = playcardId;
 		}
 		
 		public int getCustId() {
@@ -32,11 +47,12 @@ public class Playcard {
 		public void setGameId(int gameId) {
 			this.gameId = gameId;
 		}
-		
+
 		@Override
 		public String toString() {
-			return "PlayCard [custId=" + custId + ", gameId=" + gameId + "]";
+			return "Cart [custId=" + custId + ", gameId=" + gameId + ", playcardId=" + playcardId + "]";
 		}
+		
 		
 		
 		

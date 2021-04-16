@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.dao.CustomerDAO;
 import com.cg.dto.Prequest;
+import com.cg.entities.Cart;
 import com.cg.entities.Customer;
-import com.cg.entities.Playcard;
+
 import com.cg.services.CustomerPlayService;
 
 
-
-
 @RestController
-@RequestMapping("/Playcard")
+@RequestMapping("/cart")
 public class CustomerPlayController {
 	
 		@Autowired 
@@ -30,39 +29,23 @@ public class CustomerPlayController {
 		CustomerDAO custdao;
 		
 		
-		@PostMapping("/cplaycard")
+		@PostMapping("/customer/cplaycard")
 		public Customer cplaycard(@RequestBody Prequest request) {
 			return custdao.save(request.getCustomer());
 		}
 		
-		@GetMapping("/findAllPlaycard")
-		public List<Customer> buyPlaycard(){
-			return custdao.findAll();
-		}
-		
-		
-		@GetMapping("/find/{id}")
-		public List<Playcard> getAllPlaycardById(@PathVariable Integer id)
-		{
-			return customerplayService.getPlaycardById(id);
-		}
-		
-		
-		@GetMapping("/delete/{id}")
-		public List<Playcard> deletePlaycardById(@PathVariable Integer id)
-		{
-			return customerplayService.deletePlaycardById(id);
-		}
-		
-
-		@PostMapping("/insert")
-		public List<Playcard> rechargePlaycard( Playcard p)
+		@PostMapping("/buyplaycard")
+		public List<Cart> buyPlaycard( Cart c)
 		{
 			
-			return customerplayService.rechargePlaycard(p);
+			return CustomerPlayService.buyPlaycard(c);
 		}
 		
-		
+		@GetMapping("/rechargePlaycard/{id}")
+		public Cart rechargePlaycardById(@PathVariable Integer id)
+		{
+			return customerplayService.rechargePlaycardById(id);
+		}
 		
 }
 

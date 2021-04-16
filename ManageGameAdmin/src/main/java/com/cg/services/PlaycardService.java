@@ -3,6 +3,7 @@ package com.cg.services;
 import java.util.List;
 
 import com.cg.entity.PlayCard;
+import com.cg.exceptions.ResourceNotFoundException;
 
 
 
@@ -12,9 +13,9 @@ public interface PlaycardService {
 	
 	public PlayCard getPlaycardById(Integer playcardId);
 	
-	public List<PlayCard> updatePlaycard(PlayCard p);
+	public PlayCard updatePlaycard(PlayCard p, int id) throws ResourceNotFoundException;
 	
 	public List<PlayCard> getAllPlaycard();
 	
-	public List<PlayCard> deletePlaycardById(Integer  playcardId);
+	public boolean deletePlaycardById(Integer  playcardId) throws ResourceNotFoundException;
 }

@@ -28,7 +28,7 @@ public class Admin {
 	
 	@OneToMany(targetEntity = PlayCard.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ap_fk", referencedColumnName = "adminId")
-	private List<Game> playcards;
+	private List<PlayCard> playcards;
 		
 		public Admin() {
 			super();
@@ -54,14 +54,17 @@ public class Admin {
 		}
 
 
-		public List<Game> getPlaycards() {
+		
+
+		public List<PlayCard> getPlaycards() {
 			return playcards;
 		}
 
 
-		public void setPlaycards(List<Game> playcards) {
+		public void setPlaycards(List<PlayCard> playcards) {
 			this.playcards = playcards;
 		}
+
 
 		public int getAdminId() {
 			return adminId;

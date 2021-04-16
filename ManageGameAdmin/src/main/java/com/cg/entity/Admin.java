@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="manageadmin")
 public class Admin {
+	
+
 	@Id
 	private int adminId;
 	private String adminName;
@@ -42,7 +44,25 @@ public class Admin {
 			this.adminEmail = adminEmail;
 		}
 		
-		
+		public List<Game> getGames() {
+			return games;
+		}
+
+
+		public void setGames(List<Game> games) {
+			this.games = games;
+		}
+
+
+		public List<Game> getPlaycards() {
+			return playcards;
+		}
+
+
+		public void setPlaycards(List<Game> playcards) {
+			this.playcards = playcards;
+		}
+
 		public int getAdminId() {
 			return adminId;
 		}
@@ -81,14 +101,16 @@ public class Admin {
 		public void setAdminEmail(String adminEmail) {
 			this.adminEmail = adminEmail;
 		}
-		
-		
+
+
 		@Override
 		public String toString() {
 			return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword
-					+ ", adminEmail=" + adminEmail + "]";
+					+ ", adminEmail=" + adminEmail + ", games=" + games + ", playcards=" + playcards + "]";
 		}
-			
+		
+		
+	
 			
 		
 			

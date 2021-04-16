@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="manageadmin")
@@ -16,8 +19,19 @@ public class Admin {
 
 	@Id
 	private int adminId;
+	
+	
+	@NotEmpty(message = "Please enter a user name")
+	@Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
 	private String adminName;
+	
+	@NotEmpty(message = "Please enter the password")
+	@Size(min = 4, max = 20, message = "Password must be between 4 and 8 characters")
 	private String adminPassword;
+	
+	
+	@NotEmpty(message = "Please enter the email")
+	@Email(message = "Email should be valid")
 	private String adminEmail;
 
 	
@@ -36,14 +50,19 @@ public class Admin {
 		}
 	
 	
-		public Admin(int adminId, String adminName, String adminPassword, String adminEmail) {
+		
+		public Admin(int adminId,
+				@NotEmpty(message = "Please enter a user name") @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters") String adminName,
+				@NotEmpty(message = "Please enter the password") @Size(min = 4, max = 20, message = "Password must be between 4 and 8 characters") String adminPassword,
+				@NotEmpty(message = "Please enter the email") @Email(message = "Email should be valid") String adminEmail) {
 			super();
 			this.adminId = adminId;
 			this.adminName = adminName;
 			this.adminPassword = adminPassword;
 			this.adminEmail = adminEmail;
 		}
-		
+
+
 		public List<Game> getGames() {
 			return games;
 		}

@@ -28,6 +28,7 @@ public class Game {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 
 	public Game(int gameId,
 			@NotEmpty(message = "Please enter a game name") @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters") String gameName,

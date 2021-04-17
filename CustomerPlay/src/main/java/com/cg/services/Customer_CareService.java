@@ -11,6 +11,10 @@ public interface Customer_CareService {
 	
 	public List<Customer_Care> getCustomer_CareResolvingQuery();
 	
-	public List<Customer_Care> getGenuineIssueCustomer_Care();
+	public List<Customer_Care> getGenuineissueCustomer_Care();
+
+	
+
+	
 
 }

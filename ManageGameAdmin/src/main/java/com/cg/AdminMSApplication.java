@@ -15,10 +15,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableEurekaClient
-public class PlayStoreAdminApplication {
+public class AdminMSApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlayStoreAdminApplication.class, args);
+		SpringApplication.run(AdminMSApplication.class, args);
 	}
 
 	@Bean

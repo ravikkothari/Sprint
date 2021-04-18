@@ -9,7 +9,7 @@ import com.cg.exceptions.ResourceNotFoundException;
 
 public interface GameServices {
 	
-	public List<Game> addGame(Game e);
+	public Game addGame(Game e);
 	
 	public Game getGameById(Integer gameId);
 	

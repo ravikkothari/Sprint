@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.cg.entity.Admin;
 
 @Repository("adminDao")
-public interface adminDao extends JpaRepository<Admin, Integer>{
+public interface AdminDao extends JpaRepository<Admin, Integer>{
 //	@Query("SELECT a.adminName, g.gameName FROM ADMIN a JOIN a.game g")
 //	public String getJoinformation();
 	

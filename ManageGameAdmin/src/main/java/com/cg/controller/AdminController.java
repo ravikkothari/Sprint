@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.dao.adminDao;
+import com.cg.dao.AdminDao;
 import com.cg.dto.Grequest;
 import com.cg.entity.Admin;
 import com.cg.services.AdminServices;

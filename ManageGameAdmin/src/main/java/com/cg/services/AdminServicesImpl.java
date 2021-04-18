@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.dao.adminDao;
+import com.cg.dao.AdminDao;
 import com.cg.dto.Grequest;
 import com.cg.entity.Admin;
 import com.cg.entity.Game;
@@ -23,7 +23,7 @@ public class AdminServicesImpl implements AdminServices {
 	
 	
 	@Autowired
-	adminDao admindao;
+	AdminDao admindao;
 
 	@Override
 	public List<Admin> getAllAdmin() {

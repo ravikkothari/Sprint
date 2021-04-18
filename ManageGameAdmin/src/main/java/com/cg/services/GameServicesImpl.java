@@ -23,10 +23,10 @@ public class GameServicesImpl implements GameServices{
 	GameDao gamedao;
 	
 	@Override
-	public List<Game> addGame(Game g) {
+	public Game addGame(Game g) {
 		logger.info("create game service");
-		gamedao.saveAndFlush(g);
-		return gamedao.findAll();
+		Game game =gamedao.saveAndFlush(g);
+		return game;
 	}
 
 	@Override

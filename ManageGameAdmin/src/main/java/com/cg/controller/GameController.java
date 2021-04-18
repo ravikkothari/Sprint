@@ -2,101 +2,76 @@ package com.cg.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.dao.adminDao;
-import com.cg.dto.Grequest;
 import com.cg.entity.Admin;
 import com.cg.entity.Game;
-import com.cg.entity.PlayCard;
+import com.cg.exceptions.ResourceNotFoundException;
 import com.cg.services.GameServices;
-import com.cg.services.PlaycardService;
 
 @RestController
-@RequestMapping("/game")
+@RequestMapping("/admin/game")
 public class GameController {
 
-	@Autowired 
+	public static final Logger logger = LoggerFactory.getLogger(GameController.class);
+
+	@Autowired
 	GameServices gameServices;
-	
-	@Autowired
-	adminDao admindao;
-	
-	@Autowired
-	PlaycardService playcardServices;
-	
-	
-	@PostMapping("/admin/agames")
-	public Admin agames(@RequestBody Grequest request) {
-		return admindao.save(request.getAdmin());
-	}
-	
-	@GetMapping("/admin/findAllAdmin")
-	public List<Admin> findallgames(){
-		return admindao.findAll();
-	}
-	
-	@GetMapping("/admin/findAllGames")
-	public List<Game> getAllGame()
-	{
+
+	// getting all game information
+	@GetMapping("findAllGames")
+	public List<Game> getAllGame() {
+		logger.info("game controller viewAll");
 		return gameServices.getAllGame();
 	}
-	
-	
+
+	// getting each game information by Id
 	@GetMapping("/findGame/{id}")
-	public Game getGameById(@PathVariable Integer id)
-	{
+	public Game getGameById(@PathVariable Integer id) {
+		logger.info("game controller viewbyid");
 		return gameServices.getGameById(id);
 	}
-	
-	
-	@GetMapping("/deleteGame/{id}")
-	public List<Game> deleteGameById(@PathVariable Integer id)
-	{
-		return gameServices.deleteGameById(id);
-	}
-	
 
+	// deleting each game information by Id
+	@DeleteMapping("/deleteGame/{id}")
+	public String deleteGameById(@PathVariable Integer id) {
+		logger.info("gameController delete by id");
+		try {
+			if (gameServices.deleteGameById(id))
+				return "Record Deleted Successfully";
+			else
+				return "Not deleted";
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "not deleted";
+	}
+
+	// inserting game information
 	@PostMapping("/insertGame")
-	public List<Game> insertGame( Game e)
-	{
-		
+	public Game insertGame(@Validated @RequestBody Game e) {
+		logger.info("game controller insert");
 		return gameServices.addGame(e);
-	}
-	
-	
-	@PostMapping("/insertPlaycard")
-	public List<PlayCard> insertPlaycard( PlayCard p)
-	{
 		
-		return playcardServices.addPlaycard(p);
 	}
-	
-	@GetMapping("/deletePlaycard/{id}")
-	public List<PlayCard> deletePlaycardById(@PathVariable Integer id)
-	{
-		return playcardServices.deletePlaycardById(id);
+
+	// update game data by id
+	@PutMapping("updateAdmin/{id}")
+	public Game updateGameController(@RequestBody Game s, @PathVariable("id") int id) throws ResourceNotFoundException {
+		logger.info("updateAdmin game controller");
+		return gameServices.updateGame(s, id);
 	}
-	
-	@GetMapping("/findPlaycard/{id}")
-	public PlayCard getPlaycardById(@PathVariable Integer id)
-	{
-		return playcardServices
-				
-				.getPlaycardById(id);
-	}
-	
-	@GetMapping("/admin/findAllPlaycard")
-	public List<PlayCard> getAllPlaycard()
-	{
-		return playcardServices.getAllPlaycard();
-	}
-	
+
 }

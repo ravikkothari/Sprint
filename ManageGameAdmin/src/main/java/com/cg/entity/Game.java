@@ -2,6 +2,8 @@ package com.cg.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 
@@ -11,7 +13,13 @@ public class Game {
 
 	@Id
 	private int gameId;
+	
+	@NotEmpty(message = "Please enter a game name")
+	@Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
 	private String gameName;
+	
+	@NotEmpty(message = "Please enter a game description")
+	@Size(min = 1, max = 20, message = "Name must be between 1 and 40 characters")
 	private String gameDescription;
 	
 	
@@ -20,13 +28,19 @@ public class Game {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 
-	public Game(int gameId, String gameName, String gameDescription) {
+	public Game(int gameId,
+			@NotEmpty(message = "Please enter a game name") @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters") String gameName,
+			@NotEmpty(message = "Please enter a game description") @Size(min = 1, max = 20, message = "Name must be between 1 and 40 characters") String gameDescription) {
 		super();
 		this.gameId = gameId;
 		this.gameName = gameName;
 		this.gameDescription = gameDescription;
 	}
+
+
+
 
 
 	public int getGameId() {

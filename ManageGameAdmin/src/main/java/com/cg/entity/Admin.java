@@ -8,14 +8,30 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="manageadmin")
 public class Admin {
+	
+
 	@Id
 	private int adminId;
+	
+	
+	@NotEmpty(message = "Please enter a user name")
+	@Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
 	private String adminName;
+	
+	@NotEmpty(message = "Please enter the password")
+	@Size(min = 4, max = 20, message = "Password must be between 4 and 8 characters")
 	private String adminPassword;
+	
+	
+	@NotEmpty(message = "Please enter the email")
+	@Email(message = "Email should be valid")
 	private String adminEmail;
 
 	
@@ -26,7 +42,7 @@ public class Admin {
 	
 	@OneToMany(targetEntity = PlayCard.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ap_fk", referencedColumnName = "adminId")
-	private List<Game> playcards;
+	private List<PlayCard> playcards;
 		
 		public Admin() {
 			super();
@@ -34,15 +50,41 @@ public class Admin {
 		}
 	
 	
-		public Admin(int adminId, String adminName, String adminPassword, String adminEmail) {
+		
+		public Admin(int adminId,
+				@NotEmpty(message = "Please enter a user name") @Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters") String adminName,
+				@NotEmpty(message = "Please enter the password") @Size(min = 4, max = 20, message = "Password must be between 4 and 8 characters") String adminPassword,
+				@NotEmpty(message = "Please enter the email") @Email(message = "Email should be valid") String adminEmail) {
 			super();
 			this.adminId = adminId;
 			this.adminName = adminName;
 			this.adminPassword = adminPassword;
 			this.adminEmail = adminEmail;
 		}
+
+
+		public List<Game> getGames() {
+			return games;
+		}
+
+
+		public void setGames(List<Game> games) {
+			this.games = games;
+		}
+
+
 		
-		
+
+		public List<PlayCard> getPlaycards() {
+			return playcards;
+		}
+
+
+		public void setPlaycards(List<PlayCard> playcards) {
+			this.playcards = playcards;
+		}
+
+
 		public int getAdminId() {
 			return adminId;
 		}
@@ -81,14 +123,16 @@ public class Admin {
 		public void setAdminEmail(String adminEmail) {
 			this.adminEmail = adminEmail;
 		}
-		
-		
+
+
 		@Override
 		public String toString() {
 			return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword
-					+ ", adminEmail=" + adminEmail + "]";
+					+ ", adminEmail=" + adminEmail + ", games=" + games + ", playcards=" + playcards + "]";
 		}
-			
+		
+		
+	
 			
 		
 			

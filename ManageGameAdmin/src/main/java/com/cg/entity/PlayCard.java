@@ -3,12 +3,17 @@ package com.cg.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="manageplaycard")
 public class PlayCard {
 	@Id
 	private int playcardId;
+	
+	@NotEmpty(message = "Please enter a playcard name")
+	@Size(min = 1, max = 10, message = "Name must be between 1 and 10 characters")
 	private String playcardName;
 	
 	

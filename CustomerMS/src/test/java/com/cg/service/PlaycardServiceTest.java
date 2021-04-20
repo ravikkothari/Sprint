@@ -42,13 +42,15 @@ public class PlaycardServiceTest {
 		void tearDown() throws Exception {
 		}
 		
+	
+		
 		@Test
 		void testbuyPlaycardController() throws Exception {
 			PlayCard playcard = getPlaycard();
 		   
 		    Mockito.when(playcardDao.save(Mockito.any(PlayCard.class))).thenReturn(playcard);
 		    
-		    List<PlayCard> result = playcardServices.buyPlaycard(playcard);
+		    PlayCard result = (PlayCard) playcardServices.buyPlaycard(playcard);
 		    
 		    assertThat(playcard).isEqualTo(result);
 
@@ -82,13 +84,11 @@ public class PlaycardServiceTest {
 		}
 		
 		
-		@Test
 		private PlayCard getPlaycard() {
 			PlayCard p = new PlayCard();
 			
 			p.setPlaycardId(101);
 			p.setPlaycardName("abc");
-			
 			
 			return p;
 		}

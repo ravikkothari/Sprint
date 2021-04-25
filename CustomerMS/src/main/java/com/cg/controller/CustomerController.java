@@ -1,7 +1,5 @@
 package com.cg.controller;
 
-
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,45 +30,45 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService customerServices;
-	
+
 	@Autowired
 	CustomerDAO cdao;
-	
+
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	@GetMapping(value = "/getgame")
 	public ResponseEntity<String> getGame() {
 		String schemes = restTemplate.getForObject("http://localhost:9105/admin/game/findAllGames", String.class);
 		return ResponseEntity.ok(schemes);
 	}
-	
+
 	@GetMapping("/findAllCUstomer")
-	public List<Customer> findallCustomer(){
+	public List<Customer> findallCustomer() {
 		logger.info("listAllCustomer AdminController");
 		return customerServices.getAllCustomer();
 	}
-	
-	//create customer
+
+	// create customer
 	@PostMapping("/createCustomer")
 	public Customer createCustomerController(@Validated @RequestBody Customer c) {
 		logger.info("Customer controller create customer");
 		return customerServices.createCustomer(c);
 	}
-	
-	//view customer data by id
+
+	// view customer data by id
 	@GetMapping("/viewCustomerById/{id}")
-	public Customer viewCustomerByIdController( @RequestBody @PathVariable("id") int id) {
+	public Customer viewCustomerByIdController(@RequestBody @PathVariable("id") int id) {
 		logger.info("customer controller viewbyId");
 		Customer customer = customerServices.viewCustomerById(id);
 		return customer;
 	}
-	
+
+	// creating a complain from customer through resttempate
 	@PostMapping("/createComplain")
 	public String createComplain(@RequestBody Complain c) {
-		
+
 		return customerServices.createComplain(c);
 	}
-	
-			
+
 }

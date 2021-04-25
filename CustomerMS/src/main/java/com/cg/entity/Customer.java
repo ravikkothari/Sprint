@@ -15,31 +15,29 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="managecustomer")
+@Table(name = "managecustomer")
 public class Customer {
-	
 
 	@Id
 	private int customerId;
-	
-	//Validations for name
+
+	// Validations for name
 	@NotEmpty(message = "Please enter a user name")
 	@Size(min = 1, max = 20, message = "Name must be between 1 and 20 characters")
 	private String customerName;
-	
-	//Validations for age
+
+	// Validations for age
 	@NotNull
 	@Min(10)
 	@Max(15)
 	private int age;
-	
-	//foreign key one to many relationship to playcard table
+
+	// foreign key one to many relationship to playcard table
 	@OneToMany(targetEntity = PlayCard.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cp_fk", referencedColumnName = "customerId")
 	private List<PlayCard> playcards;
 
-	
-	//getters and setters
+	// getters and setters
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -72,20 +70,18 @@ public class Customer {
 		this.playcards = playcards;
 	}
 
-	//constructor using fields
-	
+	// constructor using fields
+
 	public Customer() {
-		// TODO Auto-generated constructor stub
+
 		super();
 	}
 
-	//toString method
+	// toString method
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", age=" + age + ", playcards="
 				+ playcards + "]";
-	}	
-	
-	
-}
+	}
 
+}

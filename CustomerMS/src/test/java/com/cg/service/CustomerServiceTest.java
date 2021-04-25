@@ -18,18 +18,16 @@ import com.cg.dao.CustomerDAO;
 import com.cg.entity.Customer;
 import com.cg.services.CustomerService;
 
-
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CustomerMsApplication.class)
 @WebMvcTest(value = CustomerService.class)
 public class CustomerServiceTest {
-	
+
 	@Autowired
 	private CustomerService customerService;
 
 	@MockBean
 	private CustomerDAO customerdao;
-	
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -38,41 +36,40 @@ public class CustomerServiceTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-	
+
 	@Test
 	void testCreateAdminController() throws Exception {
 		Customer customer = getCustomer();
-	   
-	    Mockito.when(customerdao.save(Mockito.any(Customer.class))).thenReturn(customer);
-	    
-	    Customer result = customerService.createCustomer(customer);
-	    
-	    assertThat(customer).isEqualTo(result);
+
+		Mockito.when(customerdao.save(Mockito.any(Customer.class))).thenReturn(customer);
+
+		Customer result = customerService.createCustomer(customer);
+
+		assertThat(customer).isEqualTo(result);
 
 	}
-	
+
 	@Test
 	void testViewCustomerByIdController() throws Exception {
-		
+
 		Customer customer = getCustomer();
 
-	    Mockito.when(customerdao.findCustomerById(Mockito.anyInt())).thenReturn(customer);
+		Mockito.when(customerdao.findCustomerById(Mockito.anyInt())).thenReturn(customer);
 
-	    Customer result = customerService.viewCustomerById(101);
-	    
-	    assertThat(customer).isEqualTo(result);
+		Customer result = customerService.viewCustomerById(101);
+
+		assertThat(customer).isEqualTo(result);
 
 	}
-	
+
 	private Customer getCustomer() {
 		Customer c = new Customer();
-		
+
 		c.setCustomerId(101);
 		c.setCustomerName("abc");
 		c.setAge(11);
-		
+
 		return c;
 	}
-
 
 }

@@ -1,5 +1,10 @@
 package com.cg.entity;
-
+/**
+-File Name          : Customer
+-Author Name        : Capgemini
+-Description        : Customer Entity POJO 
+-Creation Date		: 12/04/2021
+*/
 import java.util.List;
 
 import javax.persistence.CascadeType;

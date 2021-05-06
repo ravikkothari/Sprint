@@ -4,17 +4,22 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cg.dto.Grequest;
+
 import com.cg.entity.Admin;
 import com.cg.entity.Customer;
 import com.cg.entity.Game;
 import com.cg.exceptions.ResourceNotFoundException;
-
+/**
+-File Name          : AdminServices
+-Author Name        : Capgemini
+-Description        : Admin Service Interface 
+-Creation Date		: 14/04/2021
+*/
 public interface AdminServices {
 
 	public List<Admin> getAllAdmin();
 	
-	public Admin agamess(Grequest request);
+	
 	
 	public Admin createAdmin(Admin s);
 	public Admin viewAdminById(int id);

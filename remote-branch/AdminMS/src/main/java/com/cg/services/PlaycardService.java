@@ -5,6 +5,12 @@ import java.util.List;
 import com.cg.entity.PlayCard;
 import com.cg.exceptions.ResourceNotFoundException;
 
+/**
+-File Name          : PlaycardServices
+-Author Name        : Capgemini
+-Description        : Playcard Service Interface 
+-Creation Date		: 14/04/2021
+*/
 
 
 public interface PlaycardService {

@@ -13,7 +13,12 @@ import com.cg.entity.Game;
 import com.cg.entity.PlayCard;
 import com.cg.exceptions.ResourceNotFoundException;
 import com.cg.dao.GameDao;
-
+/**
+-File Name          : GameServicesImpl
+-Author Name        : Capgemini
+-Description        : Game Service Impl Interface 
+-Creation Date		: 14/04/2021
+*/
 @Service
 public class GameServicesImpl implements GameServices{
 

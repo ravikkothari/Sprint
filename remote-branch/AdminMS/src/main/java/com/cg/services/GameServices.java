@@ -4,7 +4,12 @@ import java.util.List;
 
 import com.cg.entity.Game;
 import com.cg.exceptions.ResourceNotFoundException;
-
+/**
+-File Name          : GameServices
+-Author Name        : Capgemini
+-Description        : Game Service Interface 
+-Creation Date		: 14/04/2021
+*/
 
 
 public interface GameServices {

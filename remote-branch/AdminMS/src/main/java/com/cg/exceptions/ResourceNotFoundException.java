@@ -1,5 +1,10 @@
 package com.cg.exceptions;
-
+/**
+-File Name          : ResourceNotFoundException
+-Author Name        : Capgemini
+-Description        : Exception handling for ResourceNotFoundException 
+-Creation Date		: 15/04/2021
+*/
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

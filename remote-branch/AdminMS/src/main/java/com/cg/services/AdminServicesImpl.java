@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.cg.dao.AdminDao;
-import com.cg.dto.Grequest;
+
 import com.cg.entity.Admin;
 import com.cg.entity.Customer;
 import com.cg.entity.Game;
 import com.cg.exceptions.ResourceNotFoundException;
 
-
+/**
+-File Name          : AdminServicesImpl
+-Author Name        : Capgemini
+-Description        : Admin Service Impl Interface 
+-Creation Date		: 14/04/2021
+*/
 @Service
 public class AdminServicesImpl implements AdminServices {
 
@@ -35,10 +40,6 @@ public class AdminServicesImpl implements AdminServices {
 		return admindao.findAll();
 	}
 
-	@Override
-	public Admin agamess(Grequest request) {
-		return admindao.save(request.getAdmin());
-	}
 
 	//create admin 
 	

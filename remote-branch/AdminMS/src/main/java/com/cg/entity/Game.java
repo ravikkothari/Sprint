@@ -5,6 +5,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/**
+-File Name          : Game
+-Author Name        : Capgemini
+-Description        : Game Entity POJO 
+-Creation Date		: 12/04/2021
+*/
 
 
 @Entity

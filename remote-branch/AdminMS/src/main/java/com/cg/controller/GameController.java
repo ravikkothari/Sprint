@@ -20,6 +20,13 @@ import com.cg.entity.Game;
 import com.cg.exceptions.ResourceNotFoundException;
 import com.cg.services.GameServices;
 
+/**
+ * -File Name : Game Controller 
+ * -Author Name : Capgemini 
+ * -Description : Rest
+ * Controller for Game Services 
+ * -Creation Date : 15/04/2021
+ */
 @RestController
 @RequestMapping("/admin/game")
 public class GameController {
@@ -29,21 +36,34 @@ public class GameController {
 	@Autowired
 	GameServices gameServices;
 
-	// getting all game information
+	/*******************************************************************************
+	 * - Method Name : getAllGames - Return type : Game - Author : Capgemini -
+	 * Creation Date : 15/04/2021 - Description : Retrieving a Game from the
+	 * database.
+	 ******************************************************************************/
 	@GetMapping("/findAllGames")
 	public List<Game> getAllGame() {
 		logger.info("game controller viewAll");
 		return gameServices.getAllGame();
 	}
 
-	// getting each game information by Id
+	/*******************************************************************************
+	 * - Method Name : findAdminbyId - Input Parameters : Integer id - Return type :
+	 * Admin - Author : Capgemini - Creation Date : 15/04/2021 - Description :
+	 * Retrieving a game by ID from the database.
+	 ******************************************************************************/
 	@GetMapping("/findGame/{id}")
 	public Game getGameById(@PathVariable Integer id) {
 		logger.info("game controller viewbyid");
 		return gameServices.getGameById(id);
 	}
 
-	// deleting each game information by Id
+	/*******************************************************************************
+	 * - Method Name : deleteGamebyId - Input Parameters : Integer id - Return type
+	 * : Game - Author : Capgemini - Creation Date : 15/04/2021 - Description :
+	 * deleting a Game from the database.
+	 ******************************************************************************/
+
 	@DeleteMapping("/deleteGame/{id}")
 	public String deleteGameById(@PathVariable Integer id) {
 		logger.info("gameController delete by id");
@@ -59,15 +79,25 @@ public class GameController {
 		return "not deleted";
 	}
 
-	// inserting game information
+	/*******************************************************************************
+	 * - Method Name : createGame - Input Parameters : Game s - Return type : game -
+	 * Author : Capgemini - Creation Date : 15/04/2021 - Description : Inserting a
+	 * game into the database.
+	 ******************************************************************************/
+
 	@PostMapping("/insertGame")
 	public Game insertGame(@Validated @RequestBody Game e) {
 		logger.info("game controller insert");
 		return gameServices.addGame(e);
-		
+
 	}
 
-	// update game data by id
+	/*******************************************************************************
+	 * - Method Name : updateGamebyId - Input Parameters : Game s, Integer id -
+	 * Return type : Admin - Author : Capgemini - Creation Date : 15/04/2021 -
+	 * Description : Updating a Customer from the database.
+	 ******************************************************************************/
+
 	@PutMapping("updateAdmin/{id}")
 	public Game updateGameController(@RequestBody Game s, @PathVariable("id") int id) throws ResourceNotFoundException {
 		logger.info("updateAdmin game controller");

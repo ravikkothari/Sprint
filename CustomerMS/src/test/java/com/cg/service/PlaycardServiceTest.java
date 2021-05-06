@@ -28,70 +28,65 @@ import com.cg.services.PlaycardService;
 
 public class PlaycardServiceTest {
 
-		@Autowired
-		private PlaycardService playcardServices;
+	@Autowired
+	private PlaycardService playcardServices;
 
-		@MockBean
-		private PlaycardDAO playcardDao;
-		
-		@BeforeEach
-		void setUp() throws Exception {
-		}
+	@MockBean
+	private PlaycardDAO playcardDao;
 
-		@AfterEach
-		void tearDown() throws Exception {
-		}
-		
-	
-		
-		@Test
-		void testbuyPlaycardController() throws Exception {
-			PlayCard playcard = getPlaycard();
-		   
-		    Mockito.when(playcardDao.save(Mockito.any(PlayCard.class))).thenReturn(playcard);
-		    
-		    PlayCard result = (PlayCard) playcardServices.buyPlaycard(playcard);
-		    
-		    assertThat(playcard).isEqualTo(result);
+	@BeforeEach
+	void setUp() throws Exception {
+	}
 
-		}
-		
-		@Test
-		void testViewPlaycardByIdController() throws Exception {
-			
-			Optional<PlayCard> playcard = Optional.of(getPlaycard());
+	@AfterEach
+	void tearDown() throws Exception {
+	}
 
-		    Mockito.when(playcardDao.findById(Mockito.anyInt())).thenReturn(playcard);
+	@Test
+	void testbuyPlaycardController() throws Exception {
+		PlayCard playcard = getPlaycard();
 
-		    PlayCard result = playcardServices.getPlaycardById(101);
-		    
-		    assertThat(playcard).isEqualTo(result);
+		Mockito.when(playcardDao.save(Mockito.any(PlayCard.class))).thenReturn(playcard);
 
-		}
-		
-		@Test
-		void testBuyPlaycardController() throws Exception {
-			
-			Optional<PlayCard> p = Optional.of(getPlaycard());
-			PlayCard playcard = getPlaycard();
-		  
-		    Mockito.when(playcardDao.findById(Mockito.anyInt())).thenReturn(p);
-		    Mockito.when(playcardDao.save(Mockito.any(PlayCard.class))).thenReturn(playcard);
-		    
-		    PlayCard result = playcardServices.rechargePlaycard(playcard, 101);
-		    
-		    assertThat(playcard).isEqualTo(result);
-		}
-		
-		
-		private PlayCard getPlaycard() {
-			PlayCard p = new PlayCard();
-			
-			p.setPlaycardId(101);
-			p.setPlaycardName("abc");
-			
-			return p;
-		}
+		PlayCard result = (PlayCard) playcardServices.buyPlaycard(playcard);
+
+		assertThat(playcard).isEqualTo(result);
+
+	}
+
+	@Test
+	void testViewPlaycardByIdController() throws Exception {
+
+		Optional<PlayCard> playcard = Optional.of(getPlaycard());
+
+		Mockito.when(playcardDao.findById(Mockito.anyInt())).thenReturn(playcard);
+
+		PlayCard result = playcardServices.getPlaycardById(101);
+
+		assertThat(playcard).isEqualTo(result);
+
+	}
+
+	@Test
+	void testBuyPlaycardController() throws Exception {
+
+		Optional<PlayCard> p = Optional.of(getPlaycard());
+		PlayCard playcard = getPlaycard();
+
+		Mockito.when(playcardDao.findById(Mockito.anyInt())).thenReturn(p);
+		Mockito.when(playcardDao.save(Mockito.any(PlayCard.class))).thenReturn(playcard);
+
+		PlayCard result = playcardServices.rechargePlaycard(playcard, 101);
+
+		assertThat(playcard).isEqualTo(result);
+	}
+
+	private PlayCard getPlaycard() {
+		PlayCard p = new PlayCard();
+
+		p.setPlaycardId(101);
+		p.setPlaycardName("abc");
+
+		return p;
+	}
 }
-
-

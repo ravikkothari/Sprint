@@ -1,5 +1,10 @@
 package com.cg.exceptions;
-
+/**
+-File Name          : GlobalExceptionHandler
+-Author Name        : Capgemini
+-Description        : Class for handling Global Exception
+-Creation Date		: 15/04/2021
+*/
 import java.util.Date;
 
 import org.springframework.http.HttpStatus;

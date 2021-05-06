@@ -20,7 +20,7 @@ public class CustomerMsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerMsApplication.class, args);
 	}
-	
+
 	@Bean
 	public Docket surveyAPI() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.cg"))

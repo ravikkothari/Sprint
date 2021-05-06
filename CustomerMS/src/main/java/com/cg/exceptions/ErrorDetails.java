@@ -1,5 +1,10 @@
 package com.cg.exceptions;
-
+/**
+-File Name          : ErrorDetails
+-Author Name        : Capgemini
+-Description        : ErrorDetails
+-Creation Date		: 15/04/2021
+*/
 import java.util.Date;
 
 public class ErrorDetails {

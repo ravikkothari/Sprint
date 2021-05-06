@@ -1,4 +1,10 @@
 package com.cg.services;
+/**
+-File Name          : PlaycardService
+-Author Name        : Capgemini
+-Description        : Playcard Service Interface 
+-Creation Date		: 14/04/2021
+*/
 
 import java.util.List;
 

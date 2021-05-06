@@ -1,4 +1,10 @@
 package com.cg.entity;
+/**
+-File Name          : PlayCard
+-Author Name        : Capgemini
+-Description        : Playcard Entity POJO 
+-Creation Date		: 12/04/2021
+*/
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,4 +1,10 @@
 package com.cg.controller;
+/**
+-File Name          : Customer Controller
+-Author Name        : Capgemini
+-Description        : Rest Controller for Customer Services
+-Creation Date		: 15/04/2021
+*/
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,35 +42,80 @@ public class CustomerController {
 
 	@Autowired
 	RestTemplate restTemplate;
-
+	
+	
+	/*******************************************************************************
+	 - Method Name      : getGame
+	 - Input Parameters : None
+	 - Return type      : ResponseEntity<String>
+	 - Author           : Capgemini
+	 - Creation Date    : 15/04/2021
+	 - Description      : Retrieving List of Game from Admin
+	  ******************************************************************************/
 	@GetMapping(value = "/getgame")
 	public ResponseEntity<String> getGame() {
 		String schemes = restTemplate.getForObject("http://localhost:9105/admin/game/findAllGames", String.class);
 		return ResponseEntity.ok(schemes);
 	}
 
+	
+	/*******************************************************************************
+	 - Method Name      : findallCustomer
+	 - Input Parameters : None
+	 - Return type      : List<Customer>
+	 - Author           : Capgemini
+	 - Creation Date    : 15/04/2021
+	 - Description      : Retrieve a list of Customers from the database.
+	  ******************************************************************************/
 	@GetMapping("/findAllCUstomer")
 	public List<Customer> findallCustomer() {
 		logger.info("listAllCustomer AdminController");
 		return customerServices.getAllCustomer();
 	}
+	
+	
 
-	// create customer
+	/*******************************************************************************
+	 - Method Name      : createCustomer
+	 - Input Parameters : Customer c
+	 - Return type      : Customer
+	 - Author           : Capgemini
+	 - Creation Date    : 15/04/2021
+	 - Description      : Inserting a Customer into the database.
+	  ******************************************************************************/
 	@PostMapping("/createCustomer")
 	public Customer createCustomerController(@Validated @RequestBody Customer c) {
 		logger.info("Customer controller create customer");
 		return customerServices.createCustomer(c);
 	}
+	
+	
 
-	// view customer data by id
+	/*******************************************************************************
+	 - Method Name      : viewCustomerbyId
+	 - Input Parameters : Integer id
+	 - Return type      : Customer
+	 - Author           : Capgemini
+	 - Creation Date    : 15/04/2021
+	 - Description      : Retrieving a Customer from the database.
+	  ******************************************************************************/
 	@GetMapping("/viewCustomerById/{id}")
 	public Customer viewCustomerByIdController(@RequestBody @PathVariable("id") int id) {
 		logger.info("customer controller viewbyId");
 		Customer customer = customerServices.viewCustomerById(id);
 		return customer;
 	}
+	
+	
 
-	// creating a complain from customer through resttempate
+	/*******************************************************************************
+	 - Method Name      : createComplain
+	 - Input Parameters : None
+	 - Return type      : String
+	 - Author           : Capgemini
+	 - Creation Date    : 15/04/2021
+	 - Description      : Creating complain Game from customer
+	 ******************************************************************************/
 	@PostMapping("/createComplain")
 	public String createComplain(@RequestBody Complain c) {
 
